@@ -1,5 +1,5 @@
 <?php
-$servername = "адрес_вашего_MySQL_сервера";
+$servername = "ns1-jana-shvets";
 $username = "DBlietotajs";
 $password = "Pa$$word1234";
 $database = "UzvardsDB";
