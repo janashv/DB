@@ -2,7 +2,7 @@
 $servername = "ns1-jana-shvets";
 $username = "DBlietotajs";
 $password = "Pa$$word1234";
-$database = "UzvardsDB";
+$database = "ShvetsDB";
 
 $conn = new mysqli($servername, $username, $password, $database);
 
