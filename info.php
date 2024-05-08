@@ -1,26 +1,16 @@
 <?php
-$servername = "ns1-jana-shvets";
-$username = "DBlietotajs";
-$password = "Pa$$word1234";
-$database = "ShvetsDB";
-
-$conn = new mysqli($servername, $username, $password, $database);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// PHP Data Objects(PDO) Sample Code:
+try {
+    $conn = new PDO("sqlsrv:server = tcp:ns1-jana-shvets.database.windows.net,1433; Database = ShvetsDB", "CloudSA26cf6cfb", "{Pa$$word1234}");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
-$sql = "CREATE TABLE VirtM (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    название_столбца VARCHAR(30) NOT NULL,
-    еще_один_столбец VARCHAR(30) NOT NULL,
-    и_так_далее VARCHAR(50)
-)";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Таблица VirtM успешно создана";
-} else {
-    echo "Ошибка при создании таблицы: " . $conn->error;
+catch (PDOException $e) {
+    print("Error connecting to SQL Server.");
+    die(print_r($e));
 }
 
-$conn->close();
+// SQL Server Extension Sample Code:
+$connectionInfo = array("UID" => "CloudSA26cf6cfb", "pwd" => "{Pa$$word1234}", "Database" => "ShvetsDB", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+$serverName = "tcp:ns1-jana-shvets.database.windows.net,1433";
+$conn = sqlsrv_connect($serverName, $connectionInfo);
 ?>
